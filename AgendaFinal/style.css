@@ -1,86 +1,174 @@
 /* Gradiente animado para o fundo da página */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #000000, #1e1e1f, #0054fdb3);
-    background-size: 400% 400%;
-    animation: gradientBG 9s ease infinite;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 38vh;
-  }
-  
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  /* Estilização da tabela */
-  table {
-    width: 80%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  table, th, td {
-    border: 1px solid #ddd;
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #2c3e50;
-    color: #ffffff;
-  }
-  
-  /* Estilização dos links */
-  a {
-    color: #03b4f5;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Estilização do cabeçalho */
-  h1 {
-    color: #ffffff;
-    margin-top: 0;
-  }
-  
-  /* Estilização do botão */
-  button, input[type="submit"] {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  button:hover, input[type="submit"]:hover {
-    background-color: #2980b9;
-  }
-  
-  /* Estilização do formulário */
-  form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  color: #ffffff;
+  overflow: hidden; /* Para evitar barras de rolagem durante animações */
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Estilização da tabela */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+table, th, td {
+  border: none;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+th {
+  background-color: #34495e;
+  color: #ffffff;
+}
+
+td {
+  background-color: #f8f9fa;
+  color: #2c3e50;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+tr:nth-child(even) td {
+  background-color: #ecf0f1;
+}
+
+tr:hover td {
+  background-color: #ddd;
+  transform: scale(1.02);
+}
+
+/* Estilização dos links */
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+  color: #2980b9;
+  transform: scale(1.1);
+}
+
+/* Estilização do cabeçalho */
+h1 {
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 2.5em;
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Estilização do botão */
+button, input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button i {
+  margin-right: 8px;
+}
+
+/* Estilização do formulário */
+form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 80%;
+  max-width: 500px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Centralizar o conteúdo */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Adicionando animações */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+button, input[type="submit"] {
+  animation: bounce 2s infinite;
+}
+
+/* Efeitos de hover nos botões */
+button:hover, input[type="submit"]:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
