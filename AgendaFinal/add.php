@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Adicionar Contato</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <h1>Adicionar Contato</h1>
