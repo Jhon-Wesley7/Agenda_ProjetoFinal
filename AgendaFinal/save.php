@@ -1,24 +1,36 @@
 <?php
-include 'db.php';
-
-$id = $_POST['id'];
-$name = $_POST['name'];
-$address = $_POST['address'];
-$phone = $_POST['phone'];
-
-if ($id) {
-    // Editar contato existente
-    $sql = "UPDATE contacts SET name='$name', address='$address', phone='$phone' WHERE id=$id";
-} else {
-    // Adicionar novo contato
-    $sql = "INSERT INTO contacts (name, address, phone) VALUES ('$name', '$address', '$phone')";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
 }
 
-if ($conn->query($sql) === TRUE) {
+require 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = isset($_POST['id']) ? $_POST['id'] : null;
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+
+    if ($id) {
+        // Update existing contact
+        $stmt = $conn->prepare('UPDATE contacts SET name = ?, address = ?, phone = ? WHERE id = ?');
+        $stmt->bind_param('sssi', $name, $address, $phone, $id);
+    } else {
+        // Insert new contact
+        $stmt = $conn->prepare('INSERT INTO contacts (name, address, phone) VALUES (?, ?, ?)');
+        $stmt->bind_param('sss', $name, $address, $phone);
+    }
+
+    if ($stmt->execute()) {
+        header('Location: index.php');
+        exit();
+    } else {
+        echo 'Erro ao salvar o contato.';
+    }
+} else {
     header('Location: index.php');
-} else {
-    echo "Erro: " . $conn->error;
+    exit();
 }
-
-$conn->close();
 ?>
